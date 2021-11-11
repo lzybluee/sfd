@@ -283,7 +283,7 @@ public class Main {
             int skipped = 0;
 
             Vector<String> index_vector = new Vector<>();
-            pattern = Pattern.compile("<a tabindex=\"-1\" href=\"(/card/[^\"]+)\">([^<]*\\d+[^<]*)</a>");
+            pattern = Pattern.compile("<a tabindex=\"-1\" href=\"(/card/[^\"]+)\">([^< ]*\\d+[^<]*)</a>");
             matcher = pattern.matcher(content);
             while (matcher.find()) {
             	String s = matcher.group(2).replace("*", "★").replace("†", "☆");
@@ -368,12 +368,12 @@ public class Main {
                             	num += 2;
                             else
                             	num++;
-                            if(retry > 1) {
+                            if(retry > 5) {
                             	System.out.println("Retry success! " + set + " " + index + " " + s);
                             }
                             break;
                         } catch (IOException e) {
-                        	if(retry >= 1) {
+                        	if(retry >= 5) {
                         		System.out.println(set + " " + index + " " + s + " Retry " + (retry + 1));
                         	}
                             retry++;
